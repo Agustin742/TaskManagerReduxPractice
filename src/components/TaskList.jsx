@@ -16,30 +16,48 @@ const TaskList = () => {
     }
 
     return (
-    <div className="mt-5">
+    <div className="w-4/6 ">
 
-      <header>
-        <h2>Toltal de Tareas: {stateTasks.length}</h2>
+      <header className="flex justify-between items-center py-4">
 
-        <Link to='/create-task'>
+        <h1>Toltal de Tareas: {stateTasks.length}</h1>
+
+        <Link 
+        to='/create-task'
+        className="bg-indigo-600 px-2 py-1 rounded-sm text-sm"
+        >
         Crear Tarea
         </Link>
       </header>
+      
+      <div className="grid grid-cols-3 gap-4 ">
         {stateTasks && stateTasks.map((task) => (
-            <div
-            className=" border border-gray-700 m-2 rounded-sm p-2 transition-all hover:scale-105 hover:shadow-md duration-500 focus:border-transparent"
-            key={task.id}>
-                <h3
-                className="text-lg font-bold m-1 "
-                >{task.title}</h3>
-                <p
-                className="m-1"
-                >{task.description}</p>
-                <button onClick={() => handleDelete(task.id)}>Borrar</button>
-                <Link to={`/edit-task/${task.id}`}>Editar</Link>
+          
+          <div key={task.id} className="bg-neutral-800 p-4 rounded-md">
+
+            <header className="flex justify-between">
+
+              <h3>{task.title}</h3>
+            
+              <div className="flex gap-x-2">
+          
+                <Link to={`/edit-task/${task.id}`}
+                  className="bg-zinc-600 px-2 py-1 text-xs rounded-md text-center"
+                >Editar</Link>  
+
+                <button onClick={() => handleDelete(task.id)}
+                  className="bg-red-500 px-2 py-1 text-xs rounded-md text-center"
+                  >Borrar</button>
+
+              </div>
+
+            </header>
+
+            <p>{task.description}</p>
                 
-            </div>
+          </div>
         ))}
+      </div>
 
     </div>
   )

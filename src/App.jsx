@@ -7,16 +7,19 @@ const App = () => {
 
 
   return (
-    <div className="container mx-auto mt-5 max-w-1/2">
-      <h1 className="text-4xl font-bold text-center">Manager de Tareas</h1>
+    <div className="bg-zinc-900 h-screen text-white">
+
+      <div className="flex items-center justify-center h-full">
+              
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<TaskList />}/>
+            <Route path="/create-task" element={<TaskForm />}/>
+            <Route path="/edit-task/:id" element={<TaskForm />}/>
+          </Routes>
+        </BrowserRouter>
       
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<TaskList />}/>
-          <Route path="/create-task" element={<TaskForm />}/>
-          <Route path="/edit-task/:id" element={<TaskForm />}/>
-        </Routes>
-      </BrowserRouter>
+      </div>
     </div>
   )
 }
