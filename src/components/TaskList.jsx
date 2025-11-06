@@ -21,7 +21,7 @@ const TaskList = () => {
       <header>
         <h2>Toltal de Tareas: {stateTasks.length}</h2>
 
-        <Link to={'/create-task'}>
+        <Link to='/create-task'>
         Crear Tarea
         </Link>
       </header>
@@ -36,6 +36,7 @@ const TaskList = () => {
                 className="m-1"
                 >{task.description}</p>
                 <button onClick={() => handleDelete(task.id)}>Borrar</button>
+                <Link to={`/edit-task/${task.id}`}>Editar</Link>
                 
             </div>
         ))}
